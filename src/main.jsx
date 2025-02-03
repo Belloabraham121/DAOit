@@ -9,6 +9,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { createThirdwebClient } from "thirdweb";
 import { create } from "zustand";
+import { sepolia } from "thirdweb/chains";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -20,7 +21,7 @@ const client = createThirdwebClient({ clientId });
 console.log("🌐 Thirdweb Client Created");
 
 const wallets = [
-  inAppWallet({ recommended: true }), // Email and phone login
+  inAppWallet({ recommended: true, }), // Email and phone login
   createWallet("io.metamask"),
 ];
 console.log("👛 Available Wallets:", wallets.map(w => w.id));
@@ -104,6 +105,10 @@ function WalletButton() {
           wallets={wallets}
           theme="light"
           modalSize="wide"
+          accountAbstraction={{chain:
+            sepolia,
+            sponsorGas: true,
+          }}
         />
       </div>
     </div>

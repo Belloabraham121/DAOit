@@ -182,7 +182,7 @@ const NewProposal = () => {
 
     // Only proceed if at least one field has content
     if (!title && !description) {
-      alert('Please add a title or description first');
+      toast.error('Please add a title or description first');
       return;
     }
 
